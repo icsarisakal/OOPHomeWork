@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/netadim/CLionProjects/untitled5/Mac.h
+string
+-
+iostream
+-
+Oyuncu.h
+C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+Takim.h
+C:/Users/netadim/CLionProjects/untitled5/Takim.h
+
 C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
 string
 C:/Users/netadim/CLionProjects/untitled5/string
@@ -41,4 +51,6 @@ Oyuncu.h
 C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
 Takim.h
 C:/Users/netadim/CLionProjects/untitled5/Takim.h
+Mac.h
+C:/Users/netadim/CLionProjects/untitled5/Mac.h
 

@@ -9,9 +9,9 @@
 #include <ctime>
 #include "Oyuncu.h"
 #include "Takim.h"
+#include "Mac.h"
  // #include "string"
 using namespace std;
-
 
 string strAd;
 string strSoyad;
@@ -30,6 +30,8 @@ vector<string>vectorTakimAdi;
 vector<string>vectorTeknikDirektor;
 vector<string>vectorTakma;
 
+vector<vector<Mac>> allMatches;
+
 void adDosyaOkuma(){
     ifstream adDosya("NewAd.txt");
     while(adDosya){
@@ -37,7 +39,6 @@ void adDosyaOkuma(){
         vectorAd.push_back(strAd);
     }
 }
-
 void soyadDosyaOkuma(){
     ifstream soyadDosya("NewSoyad.txt");
     while(soyadDosya){
@@ -56,7 +57,6 @@ void adSoyadBirlestirme(){
         vectorAdSoyad.push_back(strAdSoyad);
     }
 }
-
 void superLigOkuma(){
     ifstream file("NewSuperLig1.txt");
     while(file){
@@ -65,7 +65,6 @@ void superLigOkuma(){
     }
     v.erase(v.end());
 }
-
 void takimBilgiAyirma(){
     for(int i=0;i<v.size();i++){
         string s = v[i];
@@ -85,7 +84,6 @@ void hataCozumleme(string& a, string& b){                                    // 
     a += r;            // Convert to a character from a-z
 
 }
-
 void kontrolPaneli(){                                                   // kısaltmaları kontrol etme
     int i=0;
     int a=0;
@@ -114,7 +112,6 @@ void kontrolPaneli(){                                                   // kısa
 
     }
 }
-
 void takimKisaltmaOlusturma(){
     for(int i=0;i<vectorTakimAdi.size();i++){
         string p = vectorTakimAdi[i];                           // takma ad vectoru oluşturma
@@ -124,6 +121,8 @@ void takimKisaltmaOlusturma(){
     }
     kontrolPaneli();
 }
+
+
 
 int main() {
     adDosyaOkuma();
@@ -186,21 +185,28 @@ cout<<vectorAdSoyad.size()<<endl;
         allTeams.push_back(takim);
     }
 
-//TAKIM OLUŞTURUCU
+// fill
 
-    vector<Oyuncu> tempPlayerList;
-    for (int i = 0; i < allTeams.size(); ++i) {
-        tempPlayerList = allTeams[i].getPlayers();
-        cout<<allTeams[i].getName()<<endl;
-        cout<<"--------------------"<<endl;
-        for (int j = 0; j < tempPlayerList.size(); ++j){
-            cout<<j+1<<"."<<tempPlayerList[j].getName()<<endl;
+    size_t const half_size = allTeams.size() / 2;
+
+    vector<Takim> birinciTakimList(allTeams.begin(), allTeams.begin() + half_size);
+    vector<Takim> ikinciTakimList(allTeams.begin() + half_size, allTeams.end());
+
+    int macID = 1;
+//FİKSTÜR OLUŞTURUCU
+    for (int i = 0; i < allTeams.size()-1; i++) { //HAFTA FORU
+        vector<Mac> tempMacList;
+        for (int j = 0; j < birinciTakimList.size(); j++){
+            Mac mac(birinciTakimList[j],ikinciTakimList[j],0,0,macID);
+            tempMacList.push_back(mac);
+            macID++;
         }
-        cout<<"===================="<<endl;
+        allMatches.push_back(tempMacList);
     }
-//    for (int i = 0; i < allPlayers.size(); i++) {
-//        cout<<i+1<<"."<<allPlayers[i].getName()<<endl;
-//    }
+
+    cout<<allMatches.size();
+
+//FİKSTÜR OLUŞTURUCU
     return 0;
 }
 
