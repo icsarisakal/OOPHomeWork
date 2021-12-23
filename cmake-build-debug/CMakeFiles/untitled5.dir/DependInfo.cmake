@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/netadim/CLionProjects/untitled5/Mac.cpp" "C:/Users/netadim/CLionProjects/untitled5/cmake-build-debug/CMakeFiles/untitled5.dir/Mac.cpp.obj"
   "C:/Users/netadim/CLionProjects/untitled5/Oyuncu.cpp" "C:/Users/netadim/CLionProjects/untitled5/cmake-build-debug/CMakeFiles/untitled5.dir/Oyuncu.cpp.obj"
   "C:/Users/netadim/CLionProjects/untitled5/Takim.cpp" "C:/Users/netadim/CLionProjects/untitled5/cmake-build-debug/CMakeFiles/untitled5.dir/Takim.cpp.obj"
   "C:/Users/netadim/CLionProjects/untitled5/main.cpp" "C:/Users/netadim/CLionProjects/untitled5/cmake-build-debug/CMakeFiles/untitled5.dir/main.cpp.obj"

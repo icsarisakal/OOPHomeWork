@@ -128,6 +128,30 @@ untitled5/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled5.dir\build.make CMakeFiles/untitled5.dir/build
 .PHONY : untitled5/fast
 
+Mac.obj: Mac.cpp.obj
+.PHONY : Mac.obj
+
+# target to build an object file
+Mac.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled5.dir\build.make CMakeFiles/untitled5.dir/Mac.cpp.obj
+.PHONY : Mac.cpp.obj
+
+Mac.i: Mac.cpp.i
+.PHONY : Mac.i
+
+# target to preprocess a source file
+Mac.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled5.dir\build.make CMakeFiles/untitled5.dir/Mac.cpp.i
+.PHONY : Mac.cpp.i
+
+Mac.s: Mac.cpp.s
+.PHONY : Mac.s
+
+# target to generate assembly for a file
+Mac.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled5.dir\build.make CMakeFiles/untitled5.dir/Mac.cpp.s
+.PHONY : Mac.cpp.s
+
 Oyuncu.obj: Oyuncu.cpp.obj
 .PHONY : Oyuncu.obj
 
@@ -209,6 +233,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... untitled5
+	@echo ... Mac.obj
+	@echo ... Mac.i
+	@echo ... Mac.s
 	@echo ... Oyuncu.obj
 	@echo ... Oyuncu.i
 	@echo ... Oyuncu.s

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/untitled5.dir/Mac.cpp.obj"
   "CMakeFiles/untitled5.dir/Oyuncu.cpp.obj"
   "CMakeFiles/untitled5.dir/Takim.cpp.obj"
   "CMakeFiles/untitled5.dir/main.cpp.obj"

@@ -3,7 +3,7 @@ project(untitled5)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled5 main.cpp Oyuncu.cpp Oyuncu.h Takim.cpp Takim.h)
+add_executable(untitled5 main.cpp Oyuncu.cpp Oyuncu.h Takim.cpp Takim.h Mac.cpp Mac.h)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NewAd.txt
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

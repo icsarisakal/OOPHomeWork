@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/netadim/CLionProjects/untitled5/Mac.cpp">
+			<Option target="untitled5"/>
+		</Unit>
+		<Unit filename="C:/Users/netadim/CLionProjects/untitled5/Mac.h">
+			<Option target="untitled5"/>
+		</Unit>
 		<Unit filename="C:/Users/netadim/CLionProjects/untitled5/Oyuncu.cpp">
 			<Option target="untitled5"/>
 		</Unit>
