@@ -30,7 +30,7 @@ vector<string>vectorTakimAdi;
 vector<string>vectorTeknikDirektor;
 vector<string>vectorTakma;
 
-vector<vector<Mac>> allMatches;
+vector<vector<Mac>> allWeeks;
 
 void adDosyaOkuma(){
     ifstream adDosya("NewAd.txt");
@@ -58,7 +58,7 @@ void adSoyadBirlestirme(){
     }
 }
 void superLigOkuma(){
-    ifstream file("NewSuperLig1.txt");
+    ifstream file("NewSuperLeague.txt");
     while(file){
         getline(file, str);      // dosya okuma
         v.push_back(str);
@@ -200,11 +200,20 @@ cout<<vectorAdSoyad.size()<<endl;
             Mac mac(birinciTakimList[j],ikinciTakimList[j],0,0,macID);
             tempMacList.push_back(mac);
             macID++;
+
         }
-        allMatches.push_back(tempMacList);
+        allWeeks.push_back(tempMacList);
     }
 
-    cout<<allMatches.size();
+    cout<<"allWeeks.size()"<<endl;
+    cout<<allWeeks.size()<<endl;
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < allWeeks[i].size(); j++) {
+            cout<<"Ev Sahibi: " << allWeeks[i][j].getEvSahibi().getName()<<" "<<allWeeks[i][j].getEvSahibiSkor()<<" - "<<allWeeks[i][j].getRakipSkor()<<" Rakip: " << allWeeks[i][j].getRakip().getName()<<endl;
+        }
+        cout<<"----------------"<<endl;
+    }
 
 //FİKSTÜR OLUŞTURUCU
     return 0;
