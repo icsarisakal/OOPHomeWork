@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+string
+C:/Users/netadim/CLionProjects/untitled5/string
+
+C:/Users/netadim/CLionProjects/untitled5/Takim.h
+string
+C:/Users/netadim/CLionProjects/untitled5/string
+vector
+C:/Users/netadim/CLionProjects/untitled5/vector
+Oyuncu.h
+C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+
+C:/Users/netadim/CLionProjects/untitled5/main.cpp
+iostream
+-
+fstream
+-
+vector
+-
+string
+-
+iterator
+-
+random
+-
+algorithm
+-
+chrono
+-
+ctime
+-
+Oyuncu.h
+C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+Takim.h
+C:/Users/netadim/CLionProjects/untitled5/Takim.h
+
