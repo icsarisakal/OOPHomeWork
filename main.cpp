@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -23,12 +25,14 @@ string vectorTeknikDirektorr;
 vector<string>vectorAd;
 vector<string>vectorSoyad;
 vector<string>vectorAdSoyad;
-vector<Oyuncu> allPlayers;
-vector<Takim> allTeams;
 vector<string>v;
 vector<string>vectorTakimAdi;
 vector<string>vectorTeknikDirektor;
 vector<string>vectorTakma;
+
+vector<Oyuncu> allPlayers;
+vector<Takim> allTeams;
+vector<Mac> allMatches;
 
 vector<vector<Mac>> allWeeks;
 
@@ -58,7 +62,7 @@ void adSoyadBirlestirme(){
     }
 }
 void superLigOkuma(){
-    ifstream file("NewSuperLeague.txt");
+    ifstream file("NewSuperLeague1.txt");
     while(file){
         getline(file, str);      // dosya okuma
         v.push_back(str);
@@ -122,8 +126,6 @@ void takimKisaltmaOlusturma(){
     kontrolPaneli();
 }
 
-
-
 int main() {
     adDosyaOkuma();
     soyadDosyaOkuma();
@@ -132,6 +134,7 @@ int main() {
     superLigOkuma();
     takimBilgiAyirma();
     takimKisaltmaOlusturma();
+
 
     int playerNum=0;
     string mevkiArr[4]={"K","D","O","F"};
@@ -187,35 +190,76 @@ cout<<vectorAdSoyad.size()<<endl;
 
 // fill
 
-    size_t const half_size = allTeams.size() / 2;
-
-    vector<Takim> birinciTakimList(allTeams.begin(), allTeams.begin() + half_size);
-    vector<Takim> ikinciTakimList(allTeams.begin() + half_size, allTeams.end());
+    vector<Takim> birinciTakim(allTeams.begin(),allTeams.end()-1);
+    vector<Takim> ikinciTakim(allTeams.begin()+1,allTeams.end());
 
     int macID = 1;
 //FİKSTÜR OLUŞTURUCU
-    for (int i = 0; i < allTeams.size()-1; i++) { //HAFTA FORU
-        vector<Mac> tempMacList;
-        for (int j = 0; j < birinciTakimList.size(); j++){
-            Mac mac(birinciTakimList[j],ikinciTakimList[j],0,0,macID);
-            tempMacList.push_back(mac);
+
+    for (int i = 0; i < birinciTakim.size(); i++) {
+        for (int j = i; j < ikinciTakim.size(); j++){
+            Mac mac(birinciTakim[i],ikinciTakim[j],0,0,macID);
+            allMatches.push_back(mac);
             macID++;
-
         }
-        allWeeks.push_back(tempMacList);
+    }
+    int countMatchsperWeek;
+    if(allTeams.size()%2==1){
+        countMatchsperWeek = (allTeams.size()-1)/2;
+    }else{
+        countMatchsperWeek=allTeams.size()/2;
     }
 
-    cout<<"allWeeks.size()"<<endl;
-    cout<<allWeeks.size()<<endl;
+    vector<Mac> cloneAllMatches = allMatches;
+    vector<Mac> tempWeekMatches;
 
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < allWeeks[i].size(); j++) {
-            cout<<"Ev Sahibi: " << allWeeks[i][j].getEvSahibi().getName()<<" "<<allWeeks[i][j].getEvSahibiSkor()<<" - "<<allWeeks[i][j].getRakipSkor()<<" Rakip: " << allWeeks[i][j].getRakip().getName()<<endl;
+//    for (int b=0;b<allMatches.size();b++){
+//        if(b>0 && tempWeekMatchList.size() % countMatchsperWeek==0){
+//            allWeeks.push_back(tempWeekMatchList);
+//            tempWeekMatchList.clear();
+//        }
+//        if(b==allMatches.size()-1){
+//            allWeeks.push_back(tempWeekMatchList);
+//            tempWeekMatchList.clear();
+//        }
+//      }
+
+    for (int m =0;m<allTeams.size()-1;m++) {
+        vector<Takim> cloneAllTeams=allTeams;
+        for (int i = 0; i < allTeams.size() / 2; i++) {   //9 maça tamamlamasını sağlıyor
+            cloneAllTeams.begin();  //Ev Sahibi
+            for (int j = 0; j < cloneAllMatches.size(); j++) {
+                if (cloneAllMatches[j].getEvSahibi().getName() ==
+                    cloneAllTeams.begin()->getName()) { // takımlardan ilkinin ev sahibi olduğu ilk maçı bulduk
+                    tempWeekMatches.push_back(cloneAllMatches[j]);//tempWeekMatches vectörüne attık
+                    cloneAllTeams.erase(cloneAllTeams.begin());//ev sahibimizi sildik
+                    for (int k = 0; k < cloneAllTeams.size(); k++) {
+                        if (cloneAllMatches[j].getRakip().getName() ==
+                            cloneAllTeams[k].getName()) {//rakip takımı da sildik ki bir haftada 2 defa maç oynayamasın
+                            cloneAllTeams.erase(cloneAllTeams.begin() + k);//rakibi sildik
+                            cloneAllMatches.erase(cloneAllMatches.begin() + j);
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        cout<<"----------------"<<endl;
+        allWeeks.push_back(tempWeekMatches);
+        tempWeekMatches.clear();
+
     }
+
+    for (int k = 0; k <allWeeks.size() ; k++) {
+        cout <<"========================================================= "<< k + 1 <<". Hafta ======================================================"<<endl;
+        for (int h=0;h<allWeeks[k].size();h++) {
+            cout << k + 1 << " " << allWeeks[k][h].getEvSahibi().getName() << " - " << allWeeks[k][h].getRakip().getName()<< endl;
+        }
+        cout <<"======================================================================================================================================"<<endl;
+    }
+
 
 //FİKSTÜR OLUŞTURUCU
+
     return 0;
 }
 

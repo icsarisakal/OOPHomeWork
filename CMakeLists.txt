@@ -1,3 +1,5 @@
+
+
 cmake_minimum_required(VERSION 3.20)
 project(untitled5)
 
@@ -9,6 +11,6 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NewAd.txt
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NewSoyad.txt
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NewSuperLeague.txt
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/NewSuperLeague1.txt
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #add_executable(untitled5 deneme.cpp)
