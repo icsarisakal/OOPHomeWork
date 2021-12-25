@@ -6,29 +6,45 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/netadim/CLionProjects/untitled5/Mac.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Mac.cpp
+Mac.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Mac.h
+random
+-
+string
+-
+
+C:/Users/gundo/CLionProjects/OOPHomeWork/Mac.h
 string
 -
 iostream
 -
 Oyuncu.h
-C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.h
 Takim.h
-C:/Users/netadim/CLionProjects/untitled5/Takim.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Takim.h
 
-C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
-string
-C:/Users/netadim/CLionProjects/untitled5/string
-
-C:/Users/netadim/CLionProjects/untitled5/Takim.h
-string
-C:/Users/netadim/CLionProjects/untitled5/string
-vector
-C:/Users/netadim/CLionProjects/untitled5/vector
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.cpp
 Oyuncu.h
-C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.h
 
-C:/Users/netadim/CLionProjects/untitled5/main.cpp
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.h
+string
+C:/Users/gundo/CLionProjects/OOPHomeWork/string
+
+C:/Users/gundo/CLionProjects/OOPHomeWork/Takim.cpp
+Takim.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Takim.h
+
+C:/Users/gundo/CLionProjects/OOPHomeWork/Takim.h
+string
+C:/Users/gundo/CLionProjects/OOPHomeWork/string
+vector
+C:/Users/gundo/CLionProjects/OOPHomeWork/vector
+Oyuncu.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.h
+
+C:/Users/gundo/CLionProjects/OOPHomeWork/main.cpp
 iostream
 -
 fstream
@@ -48,9 +64,9 @@ chrono
 ctime
 -
 Oyuncu.h
-C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Oyuncu.h
 Takim.h
-C:/Users/netadim/CLionProjects/untitled5/Takim.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Takim.h
 Mac.h
-C:/Users/netadim/CLionProjects/untitled5/Mac.h
+C:/Users/gundo/CLionProjects/OOPHomeWork/Mac.h
 

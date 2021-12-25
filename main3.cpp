@@ -8,7 +8,7 @@
 #include <random>       // std::default_random_engine
 #include <chrono>       // std::chrono::system_clock
 using namespace std;
-ifstream file("C:\\Users\\btdha\\Desktop\\2.yýl\\oop\\proje\\NewSuperLig1.txt");
+ifstream file("C:\\Users\\gundo\\CLionProjects\\OOPHomeWork\\NewSuperLig1.txt");
    vector<string>v;
    vector<string>vectorTakimAdi;
    vector<string>vectorTeknikDirektor;
@@ -18,48 +18,70 @@ ifstream file("C:\\Users\\btdha\\Desktop\\2.yýl\\oop\\proje\\NewSuperLig1.txt");
    string vectorTeknikDirektorr;
 
 
-   void hataCozumleme(string& a, string& b){                                    // kýsaltmalarý deðiþtirme
-    char c;
-    int r;
-    int seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine e(seed);
-    r = (e() % 26)+65;   // generate a random number
-    a += r;            // Convert to a character from a-z
-    void kontrolPaneli();
-
-   }
+//   void hataCozumleme(string& a, string& b){                                    // kýsaltmalarý deðiþtirme
+//    char c;
+//    int r;
+//    int seed = std::chrono::system_clock::now().time_since_epoch().count();
+//    std::default_random_engine e(seed);
+//    r = (e() % 26)+65;   // generate a random number
+//    a += r;            // Convert to a character from a-z
+//    // kontrolPaneli();
+//
+//   }
 
 
 
 
 void kontrolPaneli(){                                                   // kýsaltmalarý kontrol etme
-       int i=0;
-       int a=0;
-    for(int c=0;c<vectorTakma.size();c++){
-        tekrar:
-        if(vectorTakma[a].compare(vectorTakma[i+1]) == 0){   // hata (eþit)
-            cout<<"Hata!!\a\n"<<"vector  "<<a<<"    ile     "<<i+1<< "   ayni !!"<< endl;
-            hataCozumleme(vectorTakma[a],vectorTakma[i+1]);         // hata çözümlemeye gitti
+        // vector takmada ilk elemanda duralým bunun bir sonraki elemanlarýna bakalým
+        // eðer ayný takým varsa ilk elemaný deðiþtirelim.Yoksa ikinci elemana geçelim ve döngü devam
+    for (int i = 0; i < vectorTakma.size()   ; i++) {
+
+        for (int j = i + 1 ; j < vectorTakma.size() ; j++) {
+
+            if (vectorTakma[i] == vectorTakma[j]){
+                // vectorTakma[i] ye 3.harf eklenecek.
+
+               vectorTakma[i] = vectorTakma[i].append(vektorTakimAdi[i][2]);
+            }
         }
 
-        else if(vectorTakma[a].compare(vectorTakma[i+1]) != 0){
-            i++;
-            if(i == vectorTakma.size()){
-                a++;
-                i=a+1;
-            }
-                else if(a == vectorTakma.size()){
-                    cout<<"Kýsaltmada sorun yok!\n";
-                }
 
-            else if(i != vectorTakma.size() && a != vectorTakma.size()){
-                goto tekrar;
-            }
+    }
+//    for (int i = 0; i < vectorTakma.size(); ++i) {
+//        cout << vectorTakma[i]<<endl;
+//    }
 
 
-        }
 
-}
+
+       //       int i=0;
+//       int a=0;
+//    for(int c=0;c<vectorTakma.size();c++){
+//        tekrar:
+//        if(vectorTakma[a].compare(vectorTakma[i+1]) == 0){   // hata (eþit)
+//            cout<<"Hata!!\a\n"<<"vector  "<<a<<"    ile     "<<i+1<< "   ayni !!"<< endl;
+//            hataCozumleme(vectorTakma[a],vectorTakma[i+1]);         // hata çözümlemeye gitti
+//        }
+//
+//        else if(vectorTakma[a].compare(vectorTakma[i+1]) != 0){
+//            i++;
+//            if(i == vectorTakma.size()){
+//                a++;
+//                i=a+1;
+//            }
+//                else if(a == vectorTakma.size()){
+//                    cout<<"Kýsaltmada sorun yok!\n";
+//                }
+//
+//            else if(i != vectorTakma.size() && a != vectorTakma.size()){
+//                goto tekrar;
+//            }
+//
+//
+//        }
+//
+//}
     }
 
 
@@ -96,7 +118,7 @@ int main()
 
     }
 
-kontrolPaneli();
+//kontrolPaneli();
 
 
     for(int i=0;i<vectorTakma.size();i++){
