@@ -89,32 +89,26 @@ void hataCozumleme(string& a, string& b){                                    // 
 
 }
 void kontrolPaneli(){                                                   // kısaltmaları kontrol etme
-    int i=0;
-    int a=0;
-    for(int c=0;c<vectorTakma.size();c++){
-        tekrar:
-        if(vectorTakma[a].compare(vectorTakma[i+1]) == 0){   // hata (eşit)
-            hataCozumleme(vectorTakma[a],vectorTakma[i+1]);         // hata çözümlemeye gitti
-        }
-
-        else if(vectorTakma[a].compare(vectorTakma[i+1]) != 0){
-            i++;
-            if(i == vectorTakma.size()){
-                a++;
-                i=a+1;
-            }
-            else if(a == vectorTakma.size()){
-//                cout<<"Kısaltmada sorun yok!\n";
-            }
-
-            else if(i != vectorTakma.size() && a != vectorTakma.size()){
-                goto tekrar;
-            }
-
-
-        }
-
-    }
+//    int i=0;
+//    int a=0;
+//    for(int c=0;c<vectorTakma.size();c++){
+//        do {
+//            if (vectorTakma[a].compare(vectorTakma[i + 1]) == 0) {   // hata (eşit)
+//                hataCozumleme(vectorTakma[a], vectorTakma[i + 1]);         // hata çözümlemeye gitti
+//            } else if (vectorTakma[a].compare(vectorTakma[i + 1]) != 0) {
+//                i++;
+//                if (i == vectorTakma.size()) {
+//                    a++;
+//                    i = a + 1;
+//                } else if (a == vectorTakma.size()) {
+//                    //                cout<<"Kısaltmada sorun yok!\n";
+//                }
+//
+//
+//            }
+//        } while (!(i != vectorTakma.size() && a != vectorTakma.size()));
+//
+//    }
 }
 void takimKisaltmaOlusturma(){
     for(int i=0;i<vectorTakimAdi.size();i++){
@@ -144,7 +138,6 @@ int main() {
     int tempAge;
 
 //OYUNCU OLUŞTURUCU
-    cout << vectorAdSoyad.size() << endl;
     for (int i = 0; i < vectorAdSoyad.size(); i++) {
         tempName = vectorAdSoyad[i];
         tempPerf = rand() % 101;
@@ -215,72 +208,96 @@ int main() {
     vector<Takim> cloneAllTeams = allTeams;
     vector<Takim> aciktaKalanTakimlar;
 
-//    for (int b=0;b<allMatches.size();b++){
-//        if(b>0 && tempWeekMatchList.size() % countMatchsperWeek==0){
-//            allWeeks.push_back(tempWeekMatchList);
-//            tempWeekMatchList.clear();
-//        }
-//        if(b==allMatches.size()-1){
-//            allWeeks.push_back(tempWeekMatchList);
-//            tempWeekMatchList.clear();
-//        }
-//      }
-    if (cloneAllTeams.size() % 2 == 0) {
-        for (int m = 0; m < allTeams.size() - 1; m++) {
-            for (int i = 0; i < allTeams.size() / 2; i++) {   //9 maça tamamlamasını sağlıyor
-                cloneAllTeams.begin();  //Ev Sahibi
-                for (int j = 0; j < cloneAllMatches.size(); j++) {
-                    if (cloneAllMatches[j].getEvSahibi().getName() ==
-                        cloneAllTeams.begin()->getName()) { // takımlardan ilkinin ev sahibi olduğu ilk maçı bulduk
-                        tempWeekMatches.push_back(cloneAllMatches[j]);//tempWeekMatches vectörüne attık
-                        cloneAllTeams.erase(cloneAllTeams.begin());//ev sahibimizi sildik
-                        for (int k = 0; k < cloneAllTeams.size(); k++) {
-                            if (cloneAllMatches[j].getRakip().getName() ==
-                                cloneAllTeams[k].getName()) {//rakip takımı da sildik ki bir haftada 2 defa maç oynayamasın
-                                cloneAllTeams.erase(cloneAllTeams.begin() + k);//rakibi sildik
-                                cloneAllMatches.erase(cloneAllMatches.begin() + j);
-                                break;
-                        }
-                    }
-                }
-            }
-        }
-        allWeeks.push_back(tempWeekMatches);
-        cloneAllTeams = allTeams;
-        tempWeekMatches.clear();
+    int countWeeks = allTeams.size() - 1;
+    int countMatchonWeek=allTeams.size() / 2;
 
-    }
-}
-    else{
-        for(int x = 0; x < allTeams.size(); x++){
-            for(int z = 0; z < allTeams.size();z++){
-                cloneAllTeams.begin();
-                for (int j = 0; j < cloneAllMatches.size(); j++) {
-                    if (cloneAllMatches[j].getEvSahibi().getName() == cloneAllTeams.begin()->getName()) { // takımlardan ilkinin ev sahibi olduğu ilk maçı bulduk
-                        tempWeekMatches.push_back(cloneAllMatches[j]);//tempWeekMatches vectörüne attık
-                        cloneAllTeams.erase(cloneAllTeams.begin());//ev sahibimizi sildik
-                        for (int k = 0; k < cloneAllTeams.size(); k++) {
-                            if (cloneAllMatches[j].getRakip().getName() == cloneAllTeams[k].getName()) {//rakip takımı da sildik ki bir haftada 2 defa maç oynayamasın
-                                cloneAllTeams.erase(cloneAllTeams.begin() + k);//rakibi sildik
-                                cloneAllMatches.erase(cloneAllMatches.begin() + j);
+    if (cloneAllTeams.size()%2==0){
+        for (int m = 0; m < countWeeks; m++) {
+            for (int i = 0; i < countMatchonWeek; i++) {
+                int macIndex=0;
+                for (Mac& mac: cloneAllMatches) {
+                    if(mac.getEvSahibi().getName()==cloneAllTeams.begin()->getName()){
+                        tempWeekMatches.push_back(mac);
+                        cloneAllTeams.erase(cloneAllTeams.begin());
+                        int rakipIndex=0;
+                        for (Takim& rakip:cloneAllTeams) {
+                            if(rakip.getName()==mac.getRakip().getName()){
+                                cloneAllTeams.erase(cloneAllTeams.begin()+rakipIndex);
                                 break;
+                            }else{
+                                rakipIndex++;
                             }
-                        }
-                    }
 
+                        }
+                        cloneAllMatches.erase(cloneAllMatches.begin()+macIndex);
+
+                    }
+                    macIndex++;
                 }
+                if (tempWeekMatches.size()%9==0){
+                    allWeeks.push_back(tempWeekMatches);
+                    tempWeekMatches.clear();
+                }
+                cloneAllTeams=allTeams;
             }
         }
     }
-    for (int k = 0; k <allWeeks.size() ; k++) {
-        cout <<"========================================================= "<< k + 1 <<". Hafta ======================================================"<<endl;
-        for (int h=0;h<allWeeks[k].size();h++) {
-            cout << k + 1 << " " << allWeeks[k][h].getEvSahibi().getName() << " - " << allWeeks[k][h].getRakip().getName()<< endl;
+
+
+//    cout<<"aciktaKalanTakimlar[10]"<<endl;
+
+//    if (cloneAllTeams.size() % 2 == 0) {
+//        for (int m = 0; m < allTeams.size() - 1; m++) {
+//            for (int i = 0; i < allTeams.size() / 2; i++) {   //9 maça tamamlamasını sağlıyor
+//                for (int j = 0; j < cloneAllMatches.size(); j++) {
+//                    if (cloneAllMatches[j].getEvSahibi().getName() == cloneAllTeams.begin()->getName()) { // takımlardan ilkinin ev sahibi olduğu ilk maçı bulduk
+//                        tempWeekMatches.push_back(cloneAllMatches[j]);//tempWeekMatches vectörüne attık
+//                        cloneAllTeams.erase(cloneAllTeams.begin());//ev sahibimizi sildik
+//                        for (int k = 0; k < cloneAllTeams.size(); k++) {
+//                            if (cloneAllMatches[j].getRakip().getName() == cloneAllTeams[k].getName()) {//rakip takımı da sildik ki bir haftada 2 defa maç oynayamasın
+//                                cloneAllTeams.erase(cloneAllTeams.begin() + k);//rakibi sildik
+//                                break;
+//                            }
+//                        }
+//                    cloneAllMatches.erase(cloneAllMatches.begin() + j);
+//                }
+//            }
+//        }
+//        allWeeks.push_back(tempWeekMatches);
+//        cloneAllTeams = allTeams;
+//        tempWeekMatches.clear();
+//
+//    }
+//}
+//    else{
+//        for(int x = 0; x < allTeams.size(); x++){
+//            for(int z = 0; z < allTeams.size();z++){
+//                cloneAllTeams.begin();
+//                for (int j = 0; j < cloneAllMatches.size(); j++) {
+//                    if (cloneAllMatches[j].getEvSahibi().getName() == cloneAllTeams.begin()->getName()) { // takımlardan ilkinin ev sahibi olduğu ilk maçı bulduk
+//                        tempWeekMatches.push_back(cloneAllMatches[j]);//tempWeekMatches vectörüne attık
+//                        cloneAllTeams.erase(cloneAllTeams.begin());//ev sahibimizi sildik
+//                        for (int k = 0; k < cloneAllTeams.size(); k++) {
+//                            if (cloneAllMatches[j].getRakip().getName() == cloneAllTeams[k].getName()) {//rakip takımı da sildik ki bir haftada 2 defa maç oynayamasın
+//                                cloneAllTeams.erase(cloneAllTeams.begin() + k);//rakibi sildik
+//                                cloneAllMatches.erase(cloneAllMatches.begin() + j);
+//                                break;
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
+//    }
+    int anan =0;
+    for (int asd = 0; asd < allWeeks.size(); asd++) {
+        cout<<"======================== Week "<<asd+1<<endl;
+        for (Mac& mac:allWeeks[asd]) {
+            anan++;
+            cout<<anan<<". Ev: "<<mac.getEvSahibi().getName()<<" - Rakip: "<<mac.getRakip().getName()<<endl;
         }
-        cout <<"======================================================================================================================================"<<endl;
     }
-
-
 //FİKSTÜR OLUŞTURUCU
 
     return 0;
