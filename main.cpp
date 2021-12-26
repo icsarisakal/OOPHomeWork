@@ -184,36 +184,36 @@ int main() {
     vector<Mac> tempWeekMatches;
     vector<Takim> cloneAllTeams = allTeams;
     int randTeamIndex=(rand()%allTeams.size());
-    Takim randConstTeam = allTeams[randTeamIndex];
+    Takim staticTeam = allTeams[randTeamIndex];
 
     cloneAllTeams.erase(cloneAllTeams.begin()+randTeamIndex);
     int macID=0;
     int countRepeat=cloneAllTeams.size();
-    for (size_t i= 0; i<countRepeat;i++) {
-        vector<Mac> tempWeekMatches;
-        Takim &temprandConstTeam = randConstTeam;
-        vector<Takim>& tempcloneAllTeams = cloneAllTeams;
-        Mac matchStatic(temprandConstTeam,tempcloneAllTeams[0],0,0,macID);
+
+    for (int i = 0; i < countRepeat-1; ++i) {
+        Mac staticMatch(staticTeam,cloneAllTeams[0],0,0,macID);
+        Takim temp = cloneAllTeams[0];
         macID++;
-
-        tempWeekMatches.push_back(matchStatic);
-        tempcloneAllTeams.erase(tempcloneAllTeams.begin());
-        cout<<tempcloneAllTeams.size()<<endl;
-        cout<<"-----------------------------------"<<endl;
-        for (size_t j = 0; j < tempcloneAllTeams.size(); j=j+2) {
-            Mac matchDynamic(tempcloneAllTeams[j],tempcloneAllTeams[j+1],0,0,macID);
-            tempWeekMatches.push_back(matchDynamic);
+        tempWeekMatches.push_back(staticMatch);
+        for (int j = 1; j < (countRepeat-2)/2; j++) {
+            Mac dynamicMatch(cloneAllTeams[j+1],cloneAllTeams[countRepeat-j],0,0,macID);
+            tempWeekMatches.push_back(dynamicMatch);
             macID++;
-            cout<<tempcloneAllTeams.size()<<endl;
         }
-        cout<<"===================================="<<endl;
-        tempcloneAllTeams.push_back(temprandConstTeam);
-        temprandConstTeam=tempcloneAllTeams[0];
-        tempcloneAllTeams.erase(tempcloneAllTeams.begin());
-        allWeeks.push_back(tempWeekMatches);
+//        cloneAllTeams.erase(cloneAllTeams.begin());
+//        cloneAllTeams.push_back(temp);
     }
-
-    cout<<allWeeks.size()<<endl;
+    int aa=0;
+    for (Mac a:tempWeekMatches) {
+        if(aa==0){
+            cout<<"================================================="<<endl;
+        }
+        aa++;
+        cout<<a.getMacID()<<a.getEvSahibi().getName()<<" "<<a.getRakip().getName()<<endl;
+        if(aa==9){
+            aa=0;
+        }
+    }
 //FİKSTÜR OLUŞTURUCU
 
     return 0;
