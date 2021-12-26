@@ -190,19 +190,22 @@ int main() {
     int macID=0;
     int countRepeat=cloneAllTeams.size();
 
-    for (int i = 0; i < countRepeat-1; ++i) {
+    for (int i = 0; i < countRepeat; ++i) {
         Mac staticMatch(staticTeam,cloneAllTeams[0],0,0,macID);
-        Takim temp = cloneAllTeams[0];
-        macID++;
         tempWeekMatches.push_back(staticMatch);
-        for (int j = 1; j < (countRepeat-2)/2; j++) {
-            Mac dynamicMatch(cloneAllTeams[j+1],cloneAllTeams[countRepeat-j],0,0,macID);
-            tempWeekMatches.push_back(dynamicMatch);
+        macID++;
+
+        for (int j = 0; j < ((countRepeat-1)/2); j++) {
+            Mac dynamicMatch(cloneAllTeams[1+j],cloneAllTeams[(countRepeat-1)-j],0,0,macID);
             macID++;
+            tempWeekMatches.push_back(dynamicMatch);
         }
+
+        cloneAllTeams.push_back(cloneAllTeams[0]);
+        cloneAllTeams.erase(cloneAllTeams.begin());
+    }
 //        cloneAllTeams.erase(cloneAllTeams.begin());
 //        cloneAllTeams.push_back(temp);
-    }
     int aa=0;
     for (Mac a:tempWeekMatches) {
         if(aa==0){
@@ -210,7 +213,7 @@ int main() {
         }
         aa++;
         cout<<a.getMacID()<<a.getEvSahibi().getName()<<" "<<a.getRakip().getName()<<endl;
-        if(aa==9){
+        if(aa==3){
             aa=0;
         }
     }
