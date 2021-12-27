@@ -23,6 +23,9 @@ void Takim::setCoach(string &a) {
 }
 void Takim::setPlayers(vector<Oyuncu>& a){
     players= a;
+    calcAvgD();
+    calcAvgO();
+    calcAvgF();
 }
 
 //GET FUNCS
@@ -51,16 +54,28 @@ int Takim::getPerformanceAvgF() const {
     return avgPerformanceF;
 }
 int Takim::calcAvgK() {
-    return avgPerformanceF;
+    for(int i = 0; i<1; i++){
+        avgPerformanceK+=this->players[i].getPerformanceNumber();
+    }
+
 }
 int Takim::calcAvgD() {
-    return avgPerformanceF;
+    for (int i = 1; i <= 4; i++) {
+        avgPerformanceD+=this->players[i].getPerformanceNumber();
+    }
+    avgPerformanceD=avgPerformanceD/4;
 }
 int Takim::calcAvgO() {
-    return avgPerformanceF;
+    for(int i = 5; i<=8; i++){
+        avgPerformanceO+=this->players[i].getPerformanceNumber();
+    }
+    avgPerformanceO=avgPerformanceO/4;
 }
 int Takim::calcAvgF() {
-    return avgPerformanceF;
+    for(int i =9; i<=10;i++){
+        avgPerformanceF+=this->players[i].getPerformanceNumber();
+    }
+    avgPerformanceF=avgPerformanceF/2;
 }
 
 vector<Oyuncu> Takim::getPlayers(){

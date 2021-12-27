@@ -14,6 +14,7 @@ Mac::Mac(Takim evSahibiTakim,Takim rakipTakim,
 {
     setEvSahibiSkor(evSahibininSkoru);
     setRakipSkor(rakibinSkoru);
+    setskorHesaplama();
 }
 void Mac::setEvSahibi(Takim evSahibi){
     this->evSahibi = evSahibi;
@@ -35,6 +36,62 @@ void Mac::setRakipSkor(int a){
         rakipSkor= a;
     }
 }
+
+void Mac::setskorHesaplama() {
+
+    // Defans Average
+    if (this->getEvSahibi().getPerformanceAvgD() > this->getRakip().getPerformanceAvgD()) {
+        this->setRakipSkor(this->getRakipSkor() - 1);
+    } else {
+        this->setEvSahibiSkor(this->getEvSahibiSkor() - 1);
+    }
+
+    // Orta Saha Average
+    if (this->getEvSahibi().getPerformanceAvgO() > this->getRakip().getPerformanceAvgO()) {
+        this->setEvSahibiSkor(this->getEvSahibiSkor() + 1);
+        this->setRakipSkor(this->getRakipSkor() - 1);
+    } else {
+        this->setEvSahibiSkor(this->getEvSahibiSkor() - 1);
+        this->setRakipSkor(this->getRakipSkor() + 1);
+    }
+
+    //Forvet Average
+    if (this->getEvSahibi().getPerformanceAvgF() > this->getRakip().getPerformanceAvgF()) {
+        this->setEvSahibiSkor(this->getEvSahibiSkor() + 1);
+    } else {
+        this->setRakipSkor(this->getRakipSkor() + 1);
+    }
+
+    // Toplam Average
+    if (this->getEvSahibi().getPerformanceAvgTeam() > this->getRakip().getPerformanceAvgTeam()) {
+        srand(time(NULL));
+        int durum1;
+        for (int x = 0; x < 1; x++) {
+            durum1 = rand() % 2;
+        }
+
+
+        if (durum1 == 0) {
+            this->setEvSahibiSkor(this->getEvSahibiSkor() + 1);
+        } else {
+            this->setRakipSkor(this->getRakipSkor() - 1);
+        }
+    } else {
+        srand(time(NULL));
+        int durum2;
+        for (int x = 0; x < 1; x++) {
+            durum2 = rand() % 2;
+        }
+
+
+        if (durum2 == 0) {
+            this->setRakipSkor(this->getRakipSkor() + 1);
+        } else {
+            this->setEvSahibiSkor(this->getEvSahibiSkor() - 1);
+        }
+    }
+}
+
 void Mac::setMacID(int macID){
     this->macID = macID;
 }

@@ -191,12 +191,44 @@ int main() {
     int countRepeat=cloneAllTeams.size();
 
     for (int i = 0; i < countRepeat; ++i) {
-        Mac staticMatch(staticTeam,cloneAllTeams[0],0,0,macID);
+        //GOL HESAPLAYICI
+
+        int n, evSahibiGol;
+
+        srand(time(NULL));
+
+        for(n = 0 ; n < 1 ; n++)
+        {
+            evSahibiGol = rand() % 7;
+        }
+
+        int z, rakipGol;
+        for(z = 0 ; z < 1 ; z++)
+        {
+            rakipGol = rand() % 7;
+            srand(time(NULL));
+        }
+        Mac staticMatch(staticTeam,cloneAllTeams[0],evSahibiGol,rakipGol,macID);
         tempWeekMatches.push_back(staticMatch);
         macID++;
 
         for (int j = 0; j < ((countRepeat-1)/2); j++) {
-            Mac dynamicMatch(cloneAllTeams[1+j],cloneAllTeams[(countRepeat-1)-j],0,0,macID);
+            int n, evSahibiGol;
+
+            srand(time(NULL));
+
+            for(n = 0 ; n < 1 ; n++)
+            {
+                evSahibiGol = rand() % 7;
+            }
+
+            int z, rakipGol;
+            for(z = 0 ; z < 1 ; z++)
+            {
+                rakipGol = rand() % 7;
+                srand(time(NULL));
+            }
+            Mac dynamicMatch(cloneAllTeams[1+j],cloneAllTeams[(countRepeat-1)-j],evSahibiGol,rakipGol,macID);
             macID++;
             tempWeekMatches.push_back(dynamicMatch);
         }
@@ -204,16 +236,14 @@ int main() {
         cloneAllTeams.push_back(cloneAllTeams[0]);
         cloneAllTeams.erase(cloneAllTeams.begin());
     }
-//        cloneAllTeams.erase(cloneAllTeams.begin());
-//        cloneAllTeams.push_back(temp);
     int aa=0;
     for (Mac a:tempWeekMatches) {
         if(aa==0){
             cout<<"================================================="<<endl;
         }
         aa++;
-        cout<<a.getMacID()<<a.getEvSahibi().getName()<<" "<<a.getRakip().getName()<<endl;
-        if(aa==3){
+        cout<<a.getMacID()+1<<"- Ev Sahibi: "<<a.getEvSahibi().getName()<<" "<<a.getEvSahibiSkor()<<" - "<<a.getRakipSkor()<<" "<<a.getRakip().getName()<<": Rakip"<<endl;
+        if(aa==allTeams.size()/2){
             aa=0;
         }
     }

@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Oyuncu.h"
 #include "Takim.h"
+#include "time.h"
 
 
 using namespace std;
@@ -26,6 +27,7 @@ public:
     void setRakip(Takim);
     void setEvSahibiSkor(int);
     void setRakipSkor(int);
+    void setskorHesaplama();
     void setMacID(int);
 
     int getMacId() const;
