@@ -33,10 +33,10 @@ public:
 
 private:
 //    FUNCS
-    int calcAvgK();
-    int calcAvgD();
-    int calcAvgO();
-    int calcAvgF();
+    void calcAvgK();
+    void calcAvgD();
+    void calcAvgO();
+    void calcAvgF();
 //    PROPS
     string name;
     string abbr;

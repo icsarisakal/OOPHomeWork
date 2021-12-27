@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/netadim/CLionProjects/untitled5/Mac.cpp
+Mac.h
+C:/Users/netadim/CLionProjects/untitled5/Mac.h
+random
+-
+string
+-
+
 C:/Users/netadim/CLionProjects/untitled5/Mac.h
 string
 -
@@ -15,10 +23,16 @@ Oyuncu.h
 C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
 Takim.h
 C:/Users/netadim/CLionProjects/untitled5/Takim.h
+time.h
+C:/Users/netadim/CLionProjects/untitled5/time.h
 
 C:/Users/netadim/CLionProjects/untitled5/Oyuncu.h
 string
 C:/Users/netadim/CLionProjects/untitled5/string
+
+C:/Users/netadim/CLionProjects/untitled5/Takim.cpp
+Takim.h
+C:/Users/netadim/CLionProjects/untitled5/Takim.h
 
 C:/Users/netadim/CLionProjects/untitled5/Takim.h
 string

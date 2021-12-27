@@ -53,25 +53,25 @@ int Takim::getPerformanceAvgO() const {
 int Takim::getPerformanceAvgF() const {
     return avgPerformanceF;
 }
-int Takim::calcAvgK() {
+void Takim::calcAvgK() {
     for(int i = 0; i<1; i++){
         avgPerformanceK+=this->players[i].getPerformanceNumber();
     }
 
 }
-int Takim::calcAvgD() {
+void Takim::calcAvgD() {
     for (int i = 1; i <= 4; i++) {
         avgPerformanceD+=this->players[i].getPerformanceNumber();
     }
     avgPerformanceD=avgPerformanceD/4;
 }
-int Takim::calcAvgO() {
+void Takim::calcAvgO() {
     for(int i = 5; i<=8; i++){
         avgPerformanceO+=this->players[i].getPerformanceNumber();
     }
     avgPerformanceO=avgPerformanceO/4;
 }
-int Takim::calcAvgF() {
+void Takim::calcAvgF() {
     for(int i =9; i<=10;i++){
         avgPerformanceF+=this->players[i].getPerformanceNumber();
     }
